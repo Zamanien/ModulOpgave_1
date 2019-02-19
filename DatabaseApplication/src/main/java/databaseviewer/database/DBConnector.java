@@ -16,8 +16,8 @@ public class DBConnector
         return instance;
     }
 
-    public void connect()
+    public boolean connect()
     {
-
+        return false;
     }
 }
