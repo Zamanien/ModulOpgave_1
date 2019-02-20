@@ -2,7 +2,17 @@ package databaseviewer.utilities.console;
 
 public final class SystemLog 
 {
+    private static Severity severity = Severity.INFO;
+
     private SystemLog() {}
+
+    public static Severity getSeverity() {
+        return severity;
+    }
+
+    public static void setSeverity(Severity severity) {
+        SystemLog.severity = severity;
+    }
 
     /**
      * Prompts messages to the console based on severity setting.
@@ -31,15 +41,31 @@ public final class SystemLog
             default:
                 break;
         }
-        System.out.printf("%s%s\n", sevStamp, msg);
+        //Check if user severity level is higher or equal to the log severity. 
+        if (SystemLog.getSeverity().getNum() >= severity.getNum()) 
+        {
+            System.out.printf("%s%s\n", sevStamp, msg);
+        }
     }
 
     public enum Severity
     {
-        FATAL,
-        ERROR,
-        WARNING,
-        INFO,
-        DEBUG
+        DEBUG(4),
+        FATAL(3),
+        WARNING(2),
+        ERROR(1),
+        INFO(0);
+
+        private int level;
+
+        Severity(int num)
+        {
+            this.level = num;
+        }
+
+        public int getNum() 
+        {
+            return level;
+        }
     }
 }

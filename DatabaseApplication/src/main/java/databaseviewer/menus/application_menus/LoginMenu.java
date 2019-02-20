@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 import databaseviewer.menus.ConsoleMenu;
 import databaseviewer.menus.IMenuCommand;
+import databaseviewer.menus.MenuNavigator;
+import databaseviewer.services.login.LoginService;
+import databaseviewer.utilities.console.InputManager;
 
 public class LoginMenu extends ConsoleMenu
 {
@@ -15,31 +18,47 @@ public class LoginMenu extends ConsoleMenu
             new IMenuCommand(){
             
                 @Override
-                public void run() {
-                    
+                public void run() 
+                {
+                    String username, password;
+                    System.out.print(" Username: ");
+                    username = InputManager.getInput();
+                    System.out.print(" Password: ");
+                    password = InputManager.getInput();
+
+                    if (LoginService.authenticate(username, password))
+                    {
+
+                    }
+                    System.out.println("Authentication failed!");
+                    InputManager.continuePrompt();
+                    MenuNavigator.getInstance().redrawMenu();
                 }
 
                 @Override
                 public String getName() {
-                    return "Login as admin";
+                    return "As admin";
                 }
             },
             new IMenuCommand(){
             
                 @Override
-                public void run() {
-                    
+                public void run() 
+                {
+                    MenuNavigator.getInstance().navigate(new StartMenu());
                 }
             
                 @Override
-                public String getName() {
-                    return "Login as guest";
+                public String getName() 
+                {
+                    return "As guest";
                 }
             },
             new IMenuCommand(){
             
                 @Override
-                public void run() {
+                public void run() 
+                {
                     System.exit(0);
                 }
             
@@ -52,19 +71,8 @@ public class LoginMenu extends ConsoleMenu
     }
 
     @Override
-    public boolean runCommand(byte c) 
-    {
-        return false;
-    }
-
-    @Override
-    public void prompt() {
-
-    }
-
-    @Override
-    public void exit() {
-
+    protected String getName() {
+        return "Login";
     }
 
 }

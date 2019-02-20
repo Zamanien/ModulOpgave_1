@@ -20,6 +20,11 @@ public final class UserSettings
         return userRights;
     }
 
+    public static void setUserRights(UserRights rights)
+    {
+        userRights = rights;
+    }
+
     public static void collect()
     {
         try 
@@ -62,6 +67,11 @@ public final class UserSettings
         {
             ostype = OSType.OTHER;
         }
+    }
+
+    public static void wipeSessionInfo()
+    {
+        userRights = UserRights.USER;
     }
 
     public static enum OSType
