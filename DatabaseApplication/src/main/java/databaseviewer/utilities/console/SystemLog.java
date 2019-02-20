@@ -1,4 +1,4 @@
-package databaseviewer.utilities;
+package databaseviewer.utilities.console;
 
 public final class SystemLog 
 {

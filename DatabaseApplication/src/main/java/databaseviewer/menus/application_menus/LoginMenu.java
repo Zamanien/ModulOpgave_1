@@ -5,75 +5,61 @@ import java.util.Arrays;
 import databaseviewer.menus.ConsoleMenu;
 import databaseviewer.menus.IMenuCommand;
 
-public class StartMenu extends ConsoleMenu 
+public class LoginMenu extends ConsoleMenu
 {
+
     @Override
     protected void setCommandList() 
     {
         commandList.addAll(Arrays.asList(
-
             new IMenuCommand(){
             
                 @Override
-                public void run(){
+                public void run() {
                     
                 }
 
                 @Override
-                public String getName(){
-                    return "Connect to database";
-                }
-            }
-            ,
-            new IMenuCommand(){
-            
-                @Override
-                public void run(){
-                    
-                }
-
-                @Override
-                public String getName(){
-                    return "Options";
+                public String getName() {
+                    return "Login as admin";
                 }
             },
             new IMenuCommand(){
             
                 @Override
-                public void run(){
+                public void run() {
                     
                 }
-
+            
                 @Override
-                public String getName(){
-                    return "Logout";
+                public String getName() {
+                    return "Login as guest";
                 }
             },
             new IMenuCommand(){
             
                 @Override
-                public void run(){
-                    
+                public void run() {
+                    System.exit(0);
                 }
-
+            
                 @Override
-                public String getName(){
+                public String getName() {
                     return "Exit";
                 }
             }
-
         ));
     }
 
     @Override
     public boolean runCommand(byte c) 
     {
-        if (commandList.size() >= c) 
-        {
-            commandList.get(c).run();
-            return true;
-        }
         return false;
+    }
+
+    @Override
+    public void prompt() {
+
     }
 
     @Override

@@ -1,8 +1,8 @@
 package databaseviewer;
 
 import databaseviewer.database.DBConnector;
-import databaseviewer.utilities.SystemLog;
-import databaseviewer.utilities.SystemLog.Severity;
+import databaseviewer.utilities.console.SystemLog;
+import databaseviewer.utilities.console.SystemLog.Severity;
 
 public final class Program 
 {
