@@ -1,4 +1,4 @@
-package databaseviewer.menus;
+package databaseviewer.menus.interfaces;
 
 public interface IMenuCommand 
 {

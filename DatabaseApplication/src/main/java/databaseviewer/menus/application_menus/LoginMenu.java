@@ -2,9 +2,10 @@ package databaseviewer.menus.application_menus;
 
 import java.util.Arrays;
 
+import databaseviewer.menus.interfaces.IDisplayable;
+import databaseviewer.menus.interfaces.IMenuCommand;
 import databaseviewer.menus.ConsoleMenu;
-import databaseviewer.menus.IMenuCommand;
-import databaseviewer.menus.MenuNavigator;
+import databaseviewer.menus.ScreenNavigator;
 import databaseviewer.services.login.LoginService;
 import databaseviewer.utilities.console.InputManager;
 
@@ -32,7 +33,7 @@ public class LoginMenu extends ConsoleMenu
                     }
                     System.out.println("Authentication failed!");
                     InputManager.continuePrompt();
-                    MenuNavigator.getInstance().redrawMenu();
+                    ScreenNavigator.getInstance().redrawMenu();
                 }
 
                 @Override
@@ -45,7 +46,7 @@ public class LoginMenu extends ConsoleMenu
                 @Override
                 public void run() 
                 {
-                    MenuNavigator.getInstance().navigate(new StartMenu());
+                    ScreenNavigator.getInstance().navigate(new StartMenu());
                 }
             
                 @Override
