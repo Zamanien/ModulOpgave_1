@@ -3,8 +3,8 @@ package databaseviewer.menus.application_menus;
 import java.util.Arrays;
 
 import databaseviewer.menus.ConsoleMenu;
-import databaseviewer.menus.IMenuCommand;
-import databaseviewer.menus.MenuNavigator;
+import databaseviewer.menus.interfaces.IMenuCommand;
+import databaseviewer.menus.ScreenNavigator;
 import databaseviewer.utilities.settings.UserSettings;
 
 public class StartMenu extends ConsoleMenu 
@@ -30,7 +30,7 @@ public class StartMenu extends ConsoleMenu
             
                 @Override
                 public void run(){
-                    MenuNavigator.getInstance().navigate(new OptionsMenu());
+                    ScreenNavigator.getInstance().navigate(new OptionsMenu());
                 }
 
                 @Override
@@ -44,7 +44,7 @@ public class StartMenu extends ConsoleMenu
                 public void run()
                 {
                     UserSettings.wipeSessionInfo();
-                    MenuNavigator.getInstance().navigate(new LoginMenu());
+                    ScreenNavigator.getInstance().navigate(new LoginMenu());
                 }
 
                 @Override
@@ -62,7 +62,7 @@ public class StartMenu extends ConsoleMenu
                     @Override
                     public void run() 
                     {
-                        MenuNavigator.getInstance().navigate(new AboutMenu());
+                        ScreenNavigator.getInstance().navigate(new AboutMenu());
                     }
 
             },
@@ -84,7 +84,7 @@ public class StartMenu extends ConsoleMenu
     @Override
     protected String getName() 
     {
-        return "Start Menu";
+        return "START MENU";
     }
 
 }

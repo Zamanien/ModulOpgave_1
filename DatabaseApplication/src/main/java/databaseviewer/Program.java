@@ -1,11 +1,6 @@
 package databaseviewer;
 
-<<<<<<< HEAD
-import databaseviewer.menus.MenuNavigator;
-=======
-import databaseviewer.database.DBConnector;
 import databaseviewer.menus.ScreenNavigator;
->>>>>>> 8ea84a6f40f975a8408d99c248a7a13c56c58d74
 import databaseviewer.menus.application_menus.LoginMenu;
 import databaseviewer.utilities.console.SystemLog;
 import databaseviewer.utilities.console.SystemLog.Severity;

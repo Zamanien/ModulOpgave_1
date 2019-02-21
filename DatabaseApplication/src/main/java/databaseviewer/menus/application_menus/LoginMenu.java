@@ -2,7 +2,6 @@ package databaseviewer.menus.application_menus;
 
 import java.util.Arrays;
 
-import databaseviewer.menus.interfaces.IDisplayable;
 import databaseviewer.menus.interfaces.IMenuCommand;
 import databaseviewer.menus.ConsoleMenu;
 import databaseviewer.menus.ScreenNavigator;
@@ -73,7 +72,7 @@ public class LoginMenu extends ConsoleMenu
 
     @Override
     protected String getName() {
-        return "Login";
+        return "LOGIN";
     }
 
 }

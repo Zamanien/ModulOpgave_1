@@ -2,7 +2,7 @@ package databaseviewer.utilities.console;
 
 import java.util.Scanner;
 
-import databaseviewer.menus.MenuNavigator;
+import databaseviewer.menus.ScreenNavigator;
 
 public final class InputManager 
 {
@@ -46,7 +46,7 @@ public final class InputManager
 
             if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
                 wrongs = 0; 
-                MenuNavigator.getInstance().redrawMenu(); 
+                ScreenNavigator.getInstance().redrawMenu(); 
             }
             System.out.println("Input must be of type integer i.e 0,1,2..");
             input = getInput();
@@ -67,7 +67,7 @@ public final class InputManager
 
             if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
                 wrongs = 0; 
-                MenuNavigator.getInstance().redrawMenu(); 
+                ScreenNavigator.getInstance().redrawMenu(); 
             }
             System.out.println("Input must be of type float i.e 0.175f, 3.1415f");
             input = getInput();
@@ -88,7 +88,7 @@ public final class InputManager
 
             if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
                 wrongs = 0; 
-                MenuNavigator.getInstance().redrawMenu(); 
+                ScreenNavigator.getInstance().redrawMenu(); 
             }
             System.out.println("Input must be of type signed-byte i.e 0 to 127");
             input = getInput();
@@ -114,7 +114,7 @@ public final class InputManager
             }
             if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
                 wrongs = 0; 
-                MenuNavigator.getInstance().redrawMenu();
+                ScreenNavigator.getInstance().redrawMenu();
             }
             System.out.println(String.format("Input must be in the range of %s to %s", min, max));
             input = getInput();

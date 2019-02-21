@@ -6,7 +6,6 @@ import databaseviewer.utilities.console.InputManager;
 
 public class ScreenNavigator 
 {
-    
     private IDisplayable currentDisplay;
     private int cmdsLength;
     
@@ -42,13 +41,13 @@ public class ScreenNavigator
         setCurrentMenu(display);
         ConsoleManager.clearScreen();    
         display.display();
-        display.runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength));
+        ((ConsoleMenu)display).runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength));
     }
 
     public void redrawMenu()
     {
         ConsoleManager.clearScreen();
         currentDisplay.display();
-        currentDisplay.runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength));
+        ((ConsoleMenu)currentDisplay).runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength));
     }
 }
