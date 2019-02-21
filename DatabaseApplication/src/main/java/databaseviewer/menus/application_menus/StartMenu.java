@@ -9,6 +9,10 @@ import databaseviewer.utilities.settings.UserSettings;
 
 public class StartMenu extends ConsoleMenu 
 {
+    public StartMenu() {
+        groupIndexes.add(3);
+    }
+
     @Override
     protected void setCommandList() 
     {
@@ -39,6 +43,20 @@ public class StartMenu extends ConsoleMenu
                 }
             },
             new IMenuCommand(){
+                
+                @Override
+                public String getName() {
+                    return "About";
+                }
+                
+                @Override
+                public void run() 
+                {
+                    ScreenNavigator.getInstance().navigate(new AboutMenu());
+                }
+                
+            },
+            new IMenuCommand(){
             
                 @Override
                 public void run()
@@ -51,20 +69,6 @@ public class StartMenu extends ConsoleMenu
                 public String getName(){
                     return "Logout";
                 }
-            },
-            new IMenuCommand(){
-
-                    @Override
-                    public String getName() {
-                        return "About";
-                    }
-
-                    @Override
-                    public void run() 
-                    {
-                        ScreenNavigator.getInstance().navigate(new AboutMenu());
-                    }
-
             },
             new IMenuCommand(){
             

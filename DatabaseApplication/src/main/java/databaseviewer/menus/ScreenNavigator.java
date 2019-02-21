@@ -26,28 +26,47 @@ public class ScreenNavigator
     {
         return currentDisplay;
     }
-    private void setCurrentMenu(IDisplayable display)
-    {
-        this.currentDisplay = display;
-        cmdsLength = ((ConsoleMenu)display).commandList.size()-1;
-    }
     
+    public void start(IDisplayable startDisplay)
+    {
+        //init
+        this.currentDisplay = startDisplay;
+        this.cmdsLength = ((ConsoleMenu)currentDisplay).commandList.size()-1;
+        startDisplay.display();
+
+        //Program loop
+        while (true) 
+        {
+            loop(); 
+        }
+    }
+
     /**
      * This function switches between menus, that will be drawn to screen and interacted with.
      * @param display The desired menu to be navigated to
      */
     public void navigate(IDisplayable display)
     {
-        setCurrentMenu(display);
-        ConsoleManager.clearScreen();    
-        display.display();
-        ((ConsoleMenu)display).runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength));
+        this.currentDisplay = display;
+        this.cmdsLength = ((ConsoleMenu)currentDisplay).commandList.size()-1;
+        redrawScreen();
+        waitForUserCmd();
     }
-
-    public void redrawMenu()
+    
+    public void redrawScreen()
     {
         ConsoleManager.clearScreen();
         currentDisplay.display();
+    }
+
+    private void loop()
+    {
+        redrawScreen();
+        waitForUserCmd();
+    }
+
+    private void waitForUserCmd()
+    {
         ((ConsoleMenu)currentDisplay).runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength));
     }
 }

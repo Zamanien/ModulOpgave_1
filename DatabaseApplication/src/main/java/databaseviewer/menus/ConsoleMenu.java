@@ -8,12 +8,17 @@ import databaseviewer.menus.interfaces.IMenuCommand;
 
 public abstract class ConsoleMenu implements IDisplayable
 {
+    public static final int MIN_NAME_SPACE = 15; 
+
     protected List<IMenuCommand> commandList;
-    protected int longestIndex;
+    protected List<Integer>  groupIndexes;
+    private int longestIndex;
+    private int longestIndexLength;
 
     public ConsoleMenu() 
     {
         commandList = new ArrayList<IMenuCommand>();
+        groupIndexes = new ArrayList<Integer>();
         setCommandList();
         setLongestIndex();
     }
@@ -41,16 +46,36 @@ public abstract class ConsoleMenu implements IDisplayable
     public void display()
     {
         System.out.printf("\n    ░▒▒▓▓ %s ▓▓▒▒░\n\n", getName());
+
         for (int i = 0; i < commandList.size(); i++) 
         {
+            //Handles grouping rows
+            if (groupIndexes.contains(i))
+            {
+                String grouping = "├";
+                for (int j = 0; j < longestIndexLength + 8; j++) 
+                {
+                    if (j == 5) 
+                    {
+                        grouping += "┼";
+                        continue;    
+                    }
+                    grouping += "─";
+                }
+                grouping += "┤";
+
+                System.out.println(grouping);
+            }
+
+            //Handles individual command rows
             if (i == longestIndex) 
             {
-                System.out.println(String.format("░ [%s] ░ %s ░", i, commandList.get(i).getName()));
+                System.out.println(String.format("│ [%s] │ %s │", i, commandList.get(i).getName()));
             } 
             else
             {
-                int diff = commandList.get(longestIndex).getName().length() - commandList.get(i).getName().length();
-                System.out.print(String.format("░ [%s] ░ %s" + new String(new char[diff+1]).replace('\0', ' ') + "░" + "\n" , i, commandList.get(i).getName()));
+                int diff = longestIndexLength - commandList.get(i).getName().length();
+                System.out.print(String.format("│ [%s] │ %s" + new String(new char[diff+1]).replace('\0', ' ') + "│" + "\n" , i, commandList.get(i).getName()));
             }
 
         }
@@ -67,6 +92,8 @@ public abstract class ConsoleMenu implements IDisplayable
                 index = i;
             }    
         }
+        
         longestIndex = index;
+        longestIndexLength = commandList.get(longestIndex).getName().length();
     }
 }

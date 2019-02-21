@@ -21,10 +21,10 @@ public final class InputManager
 
     public static void continuePrompt()
     {
-        System.out.print("Continue. . .");
+        System.out.print("\nContinue. . .");
         try 
         {
-            System.in.read();
+            System.console().readLine();
         } 
         catch (Exception e) 
         {
@@ -43,12 +43,9 @@ public final class InputManager
                 return Integer.parseInt(input);  
             } 
             catch (Exception e) {}
-
-            if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
-                wrongs = 0; 
-                ScreenNavigator.getInstance().redrawMenu(); 
-            }
+            
             System.out.println("Input must be of type integer i.e 0,1,2..");
+            addWrong();
             input = getInput();
         }
     }
@@ -65,11 +62,8 @@ public final class InputManager
             } 
             catch (Exception e) {}
 
-            if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
-                wrongs = 0; 
-                ScreenNavigator.getInstance().redrawMenu(); 
-            }
             System.out.println("Input must be of type float i.e 0.175f, 3.1415f");
+            addWrong();
             input = getInput();
         }
     }
@@ -86,11 +80,8 @@ public final class InputManager
             } 
             catch (Exception e) {}
 
-            if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
-                wrongs = 0; 
-                ScreenNavigator.getInstance().redrawMenu(); 
-            }
             System.out.println("Input must be of type signed-byte i.e 0 to 127");
+            addWrong();
             input = getInput();
         }
     }
@@ -112,12 +103,17 @@ public final class InputManager
             catch (Exception e) 
             {
             }
-            if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
-                wrongs = 0; 
-                ScreenNavigator.getInstance().redrawMenu();
-            }
             System.out.println(String.format("Input must be in the range of %s to %s", min, max));
+            addWrong();
             input = getInput();
+        }
+    }
+
+    private static void addWrong()
+    {
+        if (++wrongs >= WRONG_COUNT_BEFORE_CLEAR) { 
+            wrongs = 0; 
+            ScreenNavigator.getInstance().redrawScreen();
         }
     }
 }

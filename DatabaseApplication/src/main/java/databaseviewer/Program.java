@@ -22,7 +22,7 @@ public final class Program
         UserSettings.collect();
         handleArgs(args);
         ScreenNavigator navigator = ScreenNavigator.getInstance();
-        navigator.navigate(new LoginMenu());
+        navigator.start(new LoginMenu());
     }
 
     /**
