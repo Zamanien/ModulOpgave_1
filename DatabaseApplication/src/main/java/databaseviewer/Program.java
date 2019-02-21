@@ -1,7 +1,7 @@
 package databaseviewer;
 
 import databaseviewer.database.DBConnector;
-import databaseviewer.menus.MenuNavigator;
+import databaseviewer.menus.ScreenNavigator;
 import databaseviewer.menus.application_menus.LoginMenu;
 import databaseviewer.utilities.console.SystemLog;
 import databaseviewer.utilities.console.SystemLog.Severity;
@@ -22,7 +22,7 @@ public final class Program
 
         UserSettings.collect();
         handleArgs(args);
-        MenuNavigator navigator = MenuNavigator.getInstance();
+        ScreenNavigator navigator = ScreenNavigator.getInstance();
         navigator.navigate(new LoginMenu());
     }
 
@@ -46,16 +46,5 @@ public final class Program
                 }
             }
         }
-    }
-
-    /**
-     * Tries to establish a connection to the MySQL database 
-     * @return True if connection is established
-     */
-    //TODO: Handle connection loss during session for user?
-    private static boolean tryConnect()
-    {
-        DBConnector dbConnector = DBConnector.getInstance();
-        return dbConnector.connect() ? true : false;
     }
 }

@@ -30,7 +30,7 @@ public class StartMenu extends ConsoleMenu
             
                 @Override
                 public void run(){
-                    
+                    MenuNavigator.getInstance().navigate(new OptionsMenu());
                 }
 
                 @Override
@@ -51,6 +51,20 @@ public class StartMenu extends ConsoleMenu
                 public String getName(){
                     return "Logout";
                 }
+            },
+            new IMenuCommand(){
+
+                    @Override
+                    public String getName() {
+                        return "About";
+                    }
+
+                    @Override
+                    public void run() 
+                    {
+                        MenuNavigator.getInstance().navigate(new AboutMenu());
+                    }
+
             },
             new IMenuCommand(){
             

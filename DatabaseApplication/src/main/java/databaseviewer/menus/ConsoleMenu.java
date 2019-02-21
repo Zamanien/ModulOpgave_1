@@ -3,7 +3,10 @@ package databaseviewer.menus;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ConsoleMenu 
+import databaseviewer.menus.interfaces.IDisplayable;
+import databaseviewer.menus.interfaces.IMenuCommand;
+
+public abstract class ConsoleMenu implements IDisplayable
 {
     protected List<IMenuCommand> commandList;
     protected int longestIndex;
@@ -35,8 +38,8 @@ public abstract class ConsoleMenu
         return false;
     }
 
-
-    public void prompt()
+    @Override
+    public void display()
     {
         System.out.printf("\n    ░▒▒▓▓ %s ▓▓▒▒░\n\n", getName());
         for (int i = 0; i < commandList.size(); i++) 
