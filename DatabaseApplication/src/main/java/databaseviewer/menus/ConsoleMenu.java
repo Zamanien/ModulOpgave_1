@@ -29,8 +29,7 @@ public abstract class ConsoleMenu
             }
         } 
         catch (Exception e) 
-        {
-            
+        {   
         }
         return false;
     }
