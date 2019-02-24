@@ -1,4 +1,4 @@
-package databaseviewer.menus.interfaces;
+package databaseviewer.displayables.interfaces;
 
 public interface IDisplayable 
 {

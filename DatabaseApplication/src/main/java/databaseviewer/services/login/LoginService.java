@@ -4,23 +4,29 @@ public final class LoginService {
     private LoginService() {
     }
 
-    public static boolean authenticate(String username, String password) {
-        System.out.println("\nAuthenticating credentials...");
+    public static boolean login(UserCredentials credentials) {
+        try 
+        {
+            System.out.println("\nAuthenticating user credentials.");
 
-        // TEST
-        // TODO: Find safe way to check against stored user/pass pairs ?
-        if (username.equals("Frederik") && password.equals("hemmeligtkodeord")) {
-            System.out.printf("Authentication successful!\nWelcome %s\n", username);
-
-            try 
+            if (credentials.getUsername().equals("Frederik") &&
+            credentials.getPassword().equals("hemmeligtkodeord")) 
             {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) 
-            {
-                e.printStackTrace();
+                System.out.println("Authentication was successful!");
+                System.out.printf("\nWelcome %s.\n", credentials.getUsername());
+                Thread.sleep(3000);
+                return true;
             }
-            return true;
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
+        return false;
+    }
+
+    public static boolean logout()
+    {
         return false;
     }
 }

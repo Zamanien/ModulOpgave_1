@@ -1,28 +1,25 @@
 package databaseviewer;
 
-import databaseviewer.menus.ScreenNavigator;
-import databaseviewer.menus.application_menus.LoginMenu;
+import databaseviewer.displayables.ScreenNavigator;
+import databaseviewer.displayables.application_menus.LoginMenu;
 import databaseviewer.utilities.console.SystemLog;
 import databaseviewer.utilities.console.SystemLog.Severity;
 import databaseviewer.utilities.settings.UserSettings;
 
-public final class Program 
-{
-    public static void main(String[] args) 
-    {
+public final class Program {
+    public static void main(String[] args) {
+        
         try 
-        {
+        { 
             new ProcessBuilder("cmd", "/c", "title Database Application").inheritIO().start().wait();
         } 
-        catch (Exception e) 
-        {
-            
-        }
+        catch (Exception e) {}
 
-        UserSettings.collect();
-        handleArgs(args);
-        ScreenNavigator navigator = ScreenNavigator.getInstance();
+        UserSettings.collect(); 
+        handleArgs(args); 
+        ScreenNavigator navigator = ScreenNavigator.getInstance(); 
         navigator.start(new LoginMenu());
+
     }
 
     /**

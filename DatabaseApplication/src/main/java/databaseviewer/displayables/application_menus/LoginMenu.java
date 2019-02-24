@@ -1,19 +1,17 @@
-package databaseviewer.menus.application_menus;
+package databaseviewer.displayables.application_menus;
 
-import java.io.IOException;
 import java.util.Arrays;
 
-import databaseviewer.menus.interfaces.IMenuCommand;
+import databaseviewer.displayables.interfaces.IMenuCommand;
 import databaseviewer.services.login.LoginService;
-import databaseviewer.menus.ConsoleMenu;
-import databaseviewer.menus.ScreenNavigator;
+import databaseviewer.services.login.UserCredentials;
+import databaseviewer.displayables.MenuScreen;
+import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.utilities.console.InputManager;
 import databaseviewer.utilities.settings.UserSettings;
 import databaseviewer.utilities.settings.UserSettings.UserRights;
-import jline.ConsoleReader;
 
-
-public class LoginMenu extends ConsoleMenu
+public class LoginMenu extends MenuScreen
 {
     private static final Character P_MASK = '*';
 
@@ -23,9 +21,9 @@ public class LoginMenu extends ConsoleMenu
     }
 
     @Override
-    protected void setCommandList() 
+    protected void addCommands() 
     {
-        commandList.addAll(Arrays.asList(
+        commands.addAll(Arrays.asList(
             new IMenuCommand(){
                 
                 // LOGGING IN AS ADMIN 
@@ -41,29 +39,27 @@ public class LoginMenu extends ConsoleMenu
 
                     String username = null, password = null;
 
-                    try 
-                    {
-                        //USERNAME
-                        System.out.print("Username: ");
-                        username = System.console().readLine();
+                    //USERNAME
+                    System.out.print("Username: ");
+                    username = System.console().readLine();
 
-                        //PASSWORD
-                        ConsoleReader reader = new ConsoleReader();
-                        password = reader.readLine("Password: ", P_MASK);  
-                    } 
-                    catch (IOException e) {}
+                    //PASSWORD
+                    System.out.print("Password: ");
+                    password = new String(System.console().readPassword());
+                        
+                        
                     
-                   if (LoginService.authenticate(username, password))
-                   {
-                       UserSettings.setUserRights(UserRights.ADMIN);
-                       ScreenNavigator.getInstance().navigate(new StartMenu());
-                   } 
-                   else
-                   {
-                       System.out.println("Authentication failed!");
-                       InputManager.continuePrompt();
-                       ScreenNavigator.getInstance().redrawScreen();
-                   }
+                    if (LoginService.login(new UserCredentials(username, password)))
+                    {
+                        UserSettings.setUserRights(UserRights.ADMIN);
+                        ScreenNavigator.getInstance().navigate(new StartMenu());
+                    } 
+                    else
+                    {
+                        System.out.println("Authentication failed!");
+                        InputManager.continuePrompt();
+                        ScreenNavigator.getInstance().redrawScreen();
+                    }
                 }
 
             },

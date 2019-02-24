@@ -2,7 +2,7 @@ package databaseviewer.utilities.console;
 
 import java.util.Scanner;
 
-import databaseviewer.menus.ScreenNavigator;
+import databaseviewer.displayables.ScreenNavigator;
 
 public final class InputManager 
 {

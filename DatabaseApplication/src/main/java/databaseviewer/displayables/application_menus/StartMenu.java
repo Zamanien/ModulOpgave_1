@@ -1,22 +1,23 @@
-package databaseviewer.menus.application_menus;
+package databaseviewer.displayables.application_menus;
 
 import java.util.Arrays;
 
-import databaseviewer.menus.ConsoleMenu;
-import databaseviewer.menus.interfaces.IMenuCommand;
-import databaseviewer.menus.ScreenNavigator;
+import databaseviewer.displayables.MenuScreen;
+import databaseviewer.displayables.interfaces.IMenuCommand;
+import databaseviewer.displayables.application_menus.OptionsMenu;
+import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.utilities.settings.UserSettings;
 
-public class StartMenu extends ConsoleMenu 
+public class StartMenu extends MenuScreen 
 {
     public StartMenu() {
         groupIndexes.add(3);
     }
 
     @Override
-    protected void setCommandList() 
+    protected void addCommands() 
     {
-        commandList.addAll(Arrays.asList(
+        commands.addAll(Arrays.asList(
 
             new IMenuCommand(){
             

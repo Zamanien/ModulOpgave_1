@@ -1,12 +1,11 @@
-package databaseviewer.menus;
+package databaseviewer.displayables;
 
-import databaseviewer.menus.interfaces.IDisplayable;
 import databaseviewer.utilities.console.ConsoleManager;
 import databaseviewer.utilities.console.InputManager;
 
 public class ScreenNavigator 
 {
-    private IDisplayable currentDisplay;
+    private Screen currentScreen;
     private int cmdsLength;
     
     private static ScreenNavigator instance = null;
@@ -22,17 +21,24 @@ public class ScreenNavigator
         return instance;
     }
 
-    public IDisplayable getCurrentMenu() 
+    public Screen getCurrentScreen() 
     {
-        return currentDisplay;
+        return currentScreen;
+    }
+    private void setCurrentDisplay(Screen screen)
+    {
+        this.currentScreen = screen;
+        
+        this.cmdsLength = screen.commandsCount()-1;
+        
     }
     
-    public void start(IDisplayable startDisplay)
+    public void start(Screen startScreen)
     {
         //init
-        this.currentDisplay = startDisplay;
-        this.cmdsLength = ((ConsoleMenu)currentDisplay).commandList.size()-1;
-        startDisplay.display();
+        setCurrentDisplay(startScreen);
+        
+        startScreen.display();
 
         //Program loop
         while (true) 
@@ -43,12 +49,11 @@ public class ScreenNavigator
 
     /**
      * This function switches between menus, that will be drawn to screen and interacted with.
-     * @param display The desired menu to be navigated to
+     * @param screen The desired menu to be navigated to
      */
-    public void navigate(IDisplayable display)
+    public void navigate(Screen screen)
     {
-        this.currentDisplay = display;
-        this.cmdsLength = ((ConsoleMenu)currentDisplay).commandList.size()-1;
+        setCurrentDisplay(screen);
         redrawScreen();
         waitForUserCmd();
     }
@@ -56,7 +61,7 @@ public class ScreenNavigator
     public void redrawScreen()
     {
         ConsoleManager.clearScreen();
-        currentDisplay.display();
+        currentScreen.display();
     }
 
     private void loop()
@@ -67,6 +72,6 @@ public class ScreenNavigator
 
     private void waitForUserCmd()
     {
-        ((ConsoleMenu)currentDisplay).runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength));
+        currentScreen.runCommand(InputManager.getByteInputRange((byte)0, (byte)cmdsLength)); 
     }
 }
