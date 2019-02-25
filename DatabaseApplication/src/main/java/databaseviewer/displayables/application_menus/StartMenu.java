@@ -2,10 +2,12 @@ package databaseviewer.displayables.application_menus;
 
 import java.util.Arrays;
 
+import databaseviewer.database.DBConnector;
 import databaseviewer.displayables.MenuScreen;
 import databaseviewer.displayables.interfaces.IMenuCommand;
 import databaseviewer.displayables.application_menus.OptionsMenu;
 import databaseviewer.displayables.ScreenNavigator;
+import databaseviewer.utilities.console.InputManager;
 import databaseviewer.utilities.settings.UserSettings;
 
 public class StartMenu extends MenuScreen 
@@ -23,7 +25,8 @@ public class StartMenu extends MenuScreen
             
                 @Override
                 public void run(){
-                    
+                    DBConnector.connect();
+                    InputManager.continuePrompt();
                 }
 
                 @Override
