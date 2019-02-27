@@ -28,6 +28,7 @@ public abstract class Screen implements IDisplayable, ICommandable
     {
         try 
         {
+            ScreenNavigator.getInstance().redrawScreen();
             commands.get(c).run();
         } 
         catch (Exception e) 

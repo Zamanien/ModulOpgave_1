@@ -1,11 +1,17 @@
 package databaseviewer.displayables;
 
+import java.util.ArrayList;
+
 import databaseviewer.utilities.console.ConsoleManager;
 import databaseviewer.utilities.console.InputManager;
 
 public class ScreenNavigator 
 {
     private Screen currentScreen;
+    private Screen previousScreen;
+
+    private ArrayList<Screen> loadedScreens = new ArrayList<Screen>();
+
     private int cmdsLength;
     
     private static ScreenNavigator instance = null;
@@ -27,6 +33,11 @@ public class ScreenNavigator
     }
     private void setCurrentDisplay(Screen screen)
     {
+        //Initializing prev screen
+        if (currentScreen != null) {
+            previousScreen = currentScreen;
+        }
+
         this.currentScreen = screen;
         
         this.cmdsLength = screen.commandsCount()-1;
@@ -53,9 +64,25 @@ public class ScreenNavigator
      */
     public void navigate(Screen screen)
     {
-        setCurrentDisplay(screen);
+        Screen lScreen = getAlreadyLoadedScreen(screen);
+        if (lScreen != null)
+        {
+            setCurrentDisplay(lScreen);
+        } 
+        else
+        {
+            loadedScreens.add(screen);
+            setCurrentDisplay(screen);
+        }
         redrawScreen();
         waitForUserCmd();
+    }
+
+    public void goBack()
+    {
+        if (previousScreen != null) {
+            navigate(previousScreen);
+        }
     }
     
     public void redrawScreen()
@@ -68,6 +95,22 @@ public class ScreenNavigator
     {
         redrawScreen();
         waitForUserCmd();
+    }
+
+    /**
+     * Searches through the Arraylist<Screen> loadedScreens, to see if it
+     * already contains an object with the same class. If so, we 
+     * reuse it.
+     */
+    private Screen getAlreadyLoadedScreen(Screen screen)
+    {
+        for (Screen s : loadedScreens) {
+            if (screen.getClass().equals(s.getClass())) 
+            {
+                return s;    
+            }
+        }
+        return null;
     }
 
     private void waitForUserCmd()
