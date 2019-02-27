@@ -1,7 +1,7 @@
-package databaseviewer.utilities.settings;
+package databaseviewer.settings;
 
-import databaseviewer.utilities.console.SystemLog;
-import databaseviewer.utilities.console.SystemLog.Severity;
+import databaseviewer.utils.console.LogManager;
+import databaseviewer.utils.console.LogManager.Severity;
 
 public final class UserSettings 
 {
@@ -34,22 +34,22 @@ public final class UserSettings
         } 
         catch (Exception e) 
         {
-            SystemLog.logEndl("User settings couldn't be collected!", Severity.WARNING);
-            SystemLog.logEndl("UserRights has been set to USER", Severity.WARNING);
-            SystemLog.logEndl("OSType has been set to other", Severity.WARNING);
+            LogManager.logEndl("User settings couldn't be collected!", Severity.WARNING);
+            LogManager.logEndl("UserRights has been set to USER", Severity.WARNING);
+            LogManager.logEndl("OSType has been set to other", Severity.WARNING);
         }
     }
 
     private static void collectName()
     {
         name = System.getProperty("user.name");
-        SystemLog.logEndl(String.format("Name: %s", name), Severity.DEBUG);
+        LogManager.logEndl(String.format("Name: %s", name), Severity.DEBUG);
     }
 
     private static void collectOSType()
     {
         String os = System.getProperty("os.name").toLowerCase();
-        SystemLog.logEndl(String.format("OS: %s", os), Severity.DEBUG);
+        LogManager.logEndl(String.format("OS: %s", os), Severity.DEBUG);
         
         if (os.contains("windows"))
         {

@@ -1,16 +1,15 @@
 package databaseviewer.displayables.menus.database_menus;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 
 import databaseviewer.displayables.menus.MenuScreen;
-import databaseviewer.utilities.console.InputManager;
-import databaseviewer.utilities.console.SystemLog;
-import databaseviewer.utilities.console.SystemLog.Severity;
-import databaseviewer.utilities.database.ResultSetDisplayer;
+import databaseviewer.utils.console.InputManager;
+import databaseviewer.utils.console.LogManager;
+import databaseviewer.utils.console.LogManager.Severity;
+import databaseviewer.utils.database.ResultSetDisplayer;
 import databaseviewer.database.DBConnector;
 import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.displayables.interfaces.IMenuCommand;
@@ -45,6 +44,7 @@ public class DatabaseMenu extends MenuScreen {
                             Statement st = DBConnector.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
                             ResultSet rs = st.executeQuery(query);
                             
+                            //Display table
                             ResultSetDisplayer.display(rs);
 
                             st.close();
@@ -54,7 +54,7 @@ public class DatabaseMenu extends MenuScreen {
                         } 
                         catch (SQLException e) 
                         {
-                            SystemLog.logEndl("Something went wrong executing the SQL script!", Severity.ERROR);
+                            LogManager.logEndl("Something went wrong executing the SQL script!", Severity.ERROR);
                             InputManager.continuePrompt();
                         }
                 }

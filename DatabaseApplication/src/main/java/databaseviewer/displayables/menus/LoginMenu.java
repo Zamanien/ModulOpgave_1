@@ -7,9 +7,9 @@ import databaseviewer.services.login.LoginService;
 import databaseviewer.services.login.UserCredentials;
 import databaseviewer.displayables.menus.MenuScreen;
 import databaseviewer.displayables.ScreenNavigator;
-import databaseviewer.utilities.console.InputManager;
-import databaseviewer.utilities.settings.UserSettings;
-import databaseviewer.utilities.settings.UserSettings.UserRights;
+import databaseviewer.utils.console.InputManager;
+import databaseviewer.settings.UserSettings;
+import databaseviewer.settings.UserSettings.UserRights;
 
 public class LoginMenu extends MenuScreen
 {

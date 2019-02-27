@@ -1,4 +1,4 @@
-package databaseviewer.utilities.console;
+package databaseviewer.utils.console;
 
 import java.util.Scanner;
 

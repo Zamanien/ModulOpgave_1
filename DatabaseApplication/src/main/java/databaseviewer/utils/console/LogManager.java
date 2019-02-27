@@ -1,17 +1,17 @@
-package databaseviewer.utilities.console;
+package databaseviewer.utils.console;
 
-public final class SystemLog 
+public final class LogManager 
 {
     private static Severity severity = Severity.FATAL;
 
-    private SystemLog() {}
+    private LogManager() {}
 
     public static Severity getSeverity() {
         return severity;
     }
 
     public static void setSeverity(Severity severity) {
-        SystemLog.severity = severity;
+        LogManager.severity = severity;
     }
 
     /**
@@ -42,7 +42,7 @@ public final class SystemLog
                 break;
         }
         //Check if user severity level is higher or equal to the log severity. 
-        if (SystemLog.getSeverity().getNum() >= severity.getNum()) 
+        if (LogManager.getSeverity().getNum() >= severity.getNum()) 
         {
             System.out.printf("%s%s\n", sevStamp, msg);
         }

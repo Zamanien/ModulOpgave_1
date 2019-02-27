@@ -2,8 +2,8 @@ package databaseviewer.displayables;
 
 import java.util.ArrayList;
 
-import databaseviewer.utilities.console.ConsoleManager;
-import databaseviewer.utilities.console.InputManager;
+import databaseviewer.utils.console.ConsoleManager;
+import databaseviewer.utils.console.InputManager;
 
 public class ScreenNavigator 
 {

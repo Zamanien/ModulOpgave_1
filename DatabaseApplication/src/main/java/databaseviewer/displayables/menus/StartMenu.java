@@ -8,8 +8,8 @@ import databaseviewer.displayables.interfaces.IMenuCommand;
 import databaseviewer.displayables.menus.OptionsMenu;
 import databaseviewer.displayables.menus.database_menus.DatabaseMenu;
 import databaseviewer.displayables.ScreenNavigator;
-import databaseviewer.utilities.console.InputManager;
-import databaseviewer.utilities.settings.UserSettings;
+import databaseviewer.utils.console.InputManager;
+import databaseviewer.settings.UserSettings;
 
 public class StartMenu extends MenuScreen 
 {

@@ -2,9 +2,9 @@ package databaseviewer;
 
 import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.displayables.menus.LoginMenu;
-import databaseviewer.utilities.console.SystemLog;
-import databaseviewer.utilities.console.SystemLog.Severity;
-import databaseviewer.utilities.settings.UserSettings;
+import databaseviewer.utils.console.LogManager;
+import databaseviewer.utils.console.LogManager.Severity;
+import databaseviewer.settings.UserSettings;
 
 public final class Program {
     public static void main(String[] args) {
@@ -34,8 +34,8 @@ public final class Program {
                 switch (args[i]) {
                     //debug mode flag
                     case "-d": 
-                        SystemLog.setSeverity(Severity.DEBUG);
-                        SystemLog.logEndl("Log severity set to debug", Severity.DEBUG);
+                        LogManager.setSeverity(Severity.DEBUG);
+                        LogManager.logEndl("Log severity set to debug", Severity.DEBUG);
                         break;
                     default:
                         break;

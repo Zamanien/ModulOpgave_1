@@ -1,10 +1,10 @@
-package databaseviewer.utilities.console;
+package databaseviewer.utils.console;
 
 import java.io.IOException;
 
-import databaseviewer.utilities.console.SystemLog.Severity;
-import databaseviewer.utilities.settings.UserSettings;
-import databaseviewer.utilities.settings.UserSettings.OSType;
+import databaseviewer.utils.console.LogManager.Severity;
+import databaseviewer.settings.UserSettings;
+import databaseviewer.settings.UserSettings.OSType;
 
 /**
  * ConsoleManager
@@ -23,7 +23,7 @@ public final class ConsoleManager
             } 
             catch(IOException | InterruptedException e)
             {
-                SystemLog.logEndl("Couldn't clear screen", Severity.ERROR);
+                LogManager.logEndl("Couldn't clear screen", Severity.ERROR);
             }
         }
         //If console supports ansi escape characters 
