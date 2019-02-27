@@ -52,7 +52,7 @@ public class OptionsMenu extends MenuScreen
             
                 @Override
                 public void run(){
-                    ScreenNavigator.getInstance().navigate(new StartMenu());
+                    ScreenNavigator.getInstance().goBack();
                 }
             
                 @Override

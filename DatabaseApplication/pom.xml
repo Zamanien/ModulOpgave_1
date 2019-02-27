@@ -20,6 +20,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.mysql</groupId>
+            <artifactId>mysqlDriver</artifactId>
+            <version>8.0</version>
+        </dependency>
 
 
     </dependencies>

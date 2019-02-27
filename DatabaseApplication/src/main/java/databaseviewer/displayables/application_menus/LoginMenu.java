@@ -13,8 +13,6 @@ import databaseviewer.utilities.settings.UserSettings.UserRights;
 
 public class LoginMenu extends MenuScreen
 {
-    private static final Character P_MASK = '*';
-
     public LoginMenu() 
     {
         groupIndexes.add(2);

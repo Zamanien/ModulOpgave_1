@@ -6,6 +6,7 @@ import databaseviewer.database.DBConnector;
 import databaseviewer.displayables.MenuScreen;
 import databaseviewer.displayables.interfaces.IMenuCommand;
 import databaseviewer.displayables.application_menus.OptionsMenu;
+import databaseviewer.displayables.application_menus.database_menus.DatabaseMenu;
 import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.utilities.console.InputManager;
 import databaseviewer.utilities.settings.UserSettings;
@@ -27,6 +28,7 @@ public class StartMenu extends MenuScreen
                 public void run(){
                     DBConnector.connect();
                     InputManager.continuePrompt();
+                    ScreenNavigator.getInstance().navigate(new DatabaseMenu());
                 }
 
                 @Override
