@@ -1,7 +1,9 @@
-package databaseviewer.displayables;
+package databaseviewer.displayables.menus;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import databaseviewer.displayables.Screen;
 
 public abstract class MenuScreen extends Screen
 {

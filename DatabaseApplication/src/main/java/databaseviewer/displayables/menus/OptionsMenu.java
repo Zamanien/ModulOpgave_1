@@ -1,8 +1,8 @@
-package databaseviewer.displayables.application_menus;
+package databaseviewer.displayables.menus;
 
 import java.util.Arrays;
 
-import databaseviewer.displayables.MenuScreen;
+import databaseviewer.displayables.menus.MenuScreen;
 import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.displayables.interfaces.IMenuCommand;
 
@@ -18,7 +18,6 @@ public class OptionsMenu extends MenuScreen
         return "OPTIONS";
     }
 
-    
     @Override
     protected void addCommands() 
     {
@@ -39,8 +38,9 @@ public class OptionsMenu extends MenuScreen
             new IMenuCommand(){
             
                 @Override
-                public void run(){
-
+                public void run()
+                {
+                    changeUserSettings();
                 }
             
                 @Override
@@ -64,4 +64,10 @@ public class OptionsMenu extends MenuScreen
 
         );
     }
+
+    public void changeUserSettings()
+    {
+
+    }
+
 }

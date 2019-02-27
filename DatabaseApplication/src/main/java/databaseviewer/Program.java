@@ -1,7 +1,7 @@
 package databaseviewer;
 
 import databaseviewer.displayables.ScreenNavigator;
-import databaseviewer.displayables.application_menus.LoginMenu;
+import databaseviewer.displayables.menus.LoginMenu;
 import databaseviewer.utilities.console.SystemLog;
 import databaseviewer.utilities.console.SystemLog.Severity;
 import databaseviewer.utilities.settings.UserSettings;

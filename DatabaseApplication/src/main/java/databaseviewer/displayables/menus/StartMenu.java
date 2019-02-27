@@ -1,12 +1,12 @@
-package databaseviewer.displayables.application_menus;
+package databaseviewer.displayables.menus;
 
 import java.util.Arrays;
 
 import databaseviewer.database.DBConnector;
-import databaseviewer.displayables.MenuScreen;
+import databaseviewer.displayables.menus.MenuScreen;
 import databaseviewer.displayables.interfaces.IMenuCommand;
-import databaseviewer.displayables.application_menus.OptionsMenu;
-import databaseviewer.displayables.application_menus.database_menus.DatabaseMenu;
+import databaseviewer.displayables.menus.OptionsMenu;
+import databaseviewer.displayables.menus.database_menus.DatabaseMenu;
 import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.utilities.console.InputManager;
 import databaseviewer.utilities.settings.UserSettings;
@@ -39,13 +39,13 @@ public class StartMenu extends MenuScreen
             new IMenuCommand(){
             
                 @Override
-                public void run(){
-                    ScreenNavigator.getInstance().navigate(new OptionsMenu());
-                }
-
-                @Override
                 public String getName(){
                     return "Options";
+                }
+                
+                @Override
+                public void run(){
+                    ScreenNavigator.getInstance().navigate(new OptionsMenu());
                 }
             },
             new IMenuCommand(){
@@ -65,27 +65,27 @@ public class StartMenu extends MenuScreen
             new IMenuCommand(){
             
                 @Override
+                public String getName(){
+                    return "Logout";
+                }
+                
+                @Override
                 public void run()
                 {
                     UserSettings.wipeSessionInfo();
                     ScreenNavigator.getInstance().navigate(new LoginMenu());
                 }
-
-                @Override
-                public String getName(){
-                    return "Logout";
-                }
             },
             new IMenuCommand(){
             
                 @Override
-                public void run(){
-                    System.exit(0);
+                public String getName(){
+                    return "Exit";
                 }
 
                 @Override
-                public String getName(){
-                    return "Exit";
+                public void run(){
+                    System.exit(0);
                 }
             }
         ));

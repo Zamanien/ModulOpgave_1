@@ -2,7 +2,7 @@ package databaseviewer.utilities.console;
 
 public final class SystemLog 
 {
-    private static Severity severity = Severity.INFO;
+    private static Severity severity = Severity.FATAL;
 
     private SystemLog() {}
 

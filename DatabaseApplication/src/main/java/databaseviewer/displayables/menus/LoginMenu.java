@@ -1,11 +1,11 @@
-package databaseviewer.displayables.application_menus;
+package databaseviewer.displayables.menus;
 
 import java.util.Arrays;
 
 import databaseviewer.displayables.interfaces.IMenuCommand;
 import databaseviewer.services.login.LoginService;
 import databaseviewer.services.login.UserCredentials;
-import databaseviewer.displayables.MenuScreen;
+import databaseviewer.displayables.menus.MenuScreen;
 import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.utilities.console.InputManager;
 import databaseviewer.utilities.settings.UserSettings;
