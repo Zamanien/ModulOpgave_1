@@ -60,6 +60,11 @@ public class LoginMenu extends MenuScreen
                     }
                 }
 
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
+                }
+
             },
             new IMenuCommand(){
             
@@ -74,6 +79,11 @@ public class LoginMenu extends MenuScreen
                 {
                     return "As guest";
                 }
+
+				@Override
+				public boolean isAdminOnly() {
+					return false;
+				}
             },
             new IMenuCommand(){
             
@@ -86,6 +96,11 @@ public class LoginMenu extends MenuScreen
                 @Override
                 public String getName() {
                     return "Exit";
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
                 }
             }
         ));

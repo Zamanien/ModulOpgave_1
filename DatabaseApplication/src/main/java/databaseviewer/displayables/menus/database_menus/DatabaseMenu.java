@@ -58,6 +58,11 @@ public class DatabaseMenu extends MenuScreen {
                             InputManager.continuePrompt();
                         }
                 }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return true;
+                }
             },
             new IMenuCommand()
             {
@@ -70,6 +75,11 @@ public class DatabaseMenu extends MenuScreen {
                 public void run() {
 
                 }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
+                }
             },
             new IMenuCommand()
             {
@@ -81,6 +91,11 @@ public class DatabaseMenu extends MenuScreen {
                 @Override
                 public void run() {
                     ScreenNavigator.getInstance().goBack();
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
                 }
             }
         ));

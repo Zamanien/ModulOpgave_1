@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import databaseviewer.displayables.interfaces.ICommandable;
 import databaseviewer.displayables.interfaces.IDisplayable;
 import databaseviewer.displayables.interfaces.IMenuCommand;
+import databaseviewer.settings.UserSettings;
+import databaseviewer.settings.UserSettings.UserRights;
+import databaseviewer.utils.console.InputManager;
+import databaseviewer.utils.console.LogManager;
+import databaseviewer.utils.console.LogManager.Severity;
 
 public abstract class Screen implements IDisplayable, ICommandable
 {
@@ -26,10 +31,20 @@ public abstract class Screen implements IDisplayable, ICommandable
     @Override
     public boolean runCommand(byte c) 
     {
+        IMenuCommand cmd = commands.get(c);
+        ScreenNavigator.getInstance().redrawScreen();
+
+        //Check if user is authorized to run cmd
+        if (cmd.isAdminOnly() && UserSettings.getUserRights() != UserRights.ADMIN)  
+        {
+            LogManager.logEndl("You need admin rights to do this!", Severity.INFO);
+            InputManager.continuePrompt();
+            return false;
+        }
+        
         try 
         {
-            ScreenNavigator.getInstance().redrawScreen();
-            commands.get(c).run();
+            cmd.run();
         } 
         catch (Exception e) 
         {

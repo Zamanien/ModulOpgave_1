@@ -34,6 +34,11 @@ public class OptionsMenu extends MenuScreen
                 public String getName() {
                     return "Severity level";
                 }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
+                }
             },
             new IMenuCommand(){
             
@@ -47,6 +52,11 @@ public class OptionsMenu extends MenuScreen
                 public String getName() {
                     return "User options";
                 }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
+                }
             },
             new IMenuCommand(){
             
@@ -58,6 +68,11 @@ public class OptionsMenu extends MenuScreen
                 @Override
                 public String getName() {
                     return "Back";
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
                 }
             }
         )

@@ -23,7 +23,6 @@ public class StartMenu extends MenuScreen
         commands.addAll(Arrays.asList(
 
             new IMenuCommand(){
-            
                 @Override
                 public void run(){
                     DBConnector.connect();
@@ -34,6 +33,11 @@ public class StartMenu extends MenuScreen
                 @Override
                 public String getName(){
                     return "Connect to database";
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return true;
                 }
             },
             new IMenuCommand(){
@@ -47,6 +51,11 @@ public class StartMenu extends MenuScreen
                 public void run(){
                     ScreenNavigator.getInstance().navigate(new OptionsMenu());
                 }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
+                }
             },
             new IMenuCommand(){
                 
@@ -59,6 +68,11 @@ public class StartMenu extends MenuScreen
                 public void run() 
                 {
                     ScreenNavigator.getInstance().navigate(new AboutMenu());
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
                 }
                 
             },
@@ -75,6 +89,11 @@ public class StartMenu extends MenuScreen
                     UserSettings.wipeSessionInfo();
                     ScreenNavigator.getInstance().navigate(new LoginMenu());
                 }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
+                }
             },
             new IMenuCommand(){
             
@@ -86,6 +105,11 @@ public class StartMenu extends MenuScreen
                 @Override
                 public void run(){
                     System.exit(0);
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
                 }
             }
         ));

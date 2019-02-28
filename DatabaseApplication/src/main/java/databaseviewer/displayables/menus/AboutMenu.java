@@ -34,6 +34,11 @@ public class AboutMenu extends MenuScreen
                 public String getName() {
                     return "About program";
                 }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
+                }
             },
             new IMenuCommand(){
             
@@ -45,6 +50,11 @@ public class AboutMenu extends MenuScreen
                 @Override
                 public String getName() {
                     return "About the database";
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
                 }
             },
             new IMenuCommand(){
@@ -58,6 +68,11 @@ public class AboutMenu extends MenuScreen
                 @Override
                 public String getName() {
                     return "Back";
+                }
+
+                @Override
+                public boolean isAdminOnly() {
+                    return false;
                 }
             }
         ));
