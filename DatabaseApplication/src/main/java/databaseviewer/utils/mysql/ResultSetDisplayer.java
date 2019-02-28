@@ -1,4 +1,4 @@
-package databaseviewer.utils.database;
+package databaseviewer.utils.mysql;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

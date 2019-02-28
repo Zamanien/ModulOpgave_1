@@ -9,7 +9,7 @@ import databaseviewer.displayables.menus.MenuScreen;
 import databaseviewer.utils.console.InputManager;
 import databaseviewer.utils.console.LogManager;
 import databaseviewer.utils.console.LogManager.Severity;
-import databaseviewer.utils.database.ResultSetDisplayer;
+import databaseviewer.utils.mysql.ResultSetDisplayer;
 import databaseviewer.database.DBConnector;
 import databaseviewer.displayables.ScreenNavigator;
 import databaseviewer.displayables.interfaces.IMenuCommand;
