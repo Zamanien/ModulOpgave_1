@@ -22,8 +22,8 @@
 
         <dependency>
             <groupId>org.mysql</groupId>
-            <artifactId>mysqlDriver</artifactId>
-            <version>8.0</version>
+            <artifactId>MySQL</artifactId>
+            <version>3.8.0</version>
         </dependency>
 
 
